@@ -3,8 +3,19 @@
     <head>
         <title>Kenji Takahashi :: {{ page.title }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" href="/css/main.css"/>
+        <link rel="stylesheet" href="/css/left.css"/>
     </head>
 </html>
 <body>
-    {{ content }}
+    <div id="left">
+        {% include left.html %}
+    </div>
+    <div id="right">
+        placeholder...
+    </div>
+    <div id="center">
+        {% include menu.html %}
+        {{ content }}
+    </div>
 </body>

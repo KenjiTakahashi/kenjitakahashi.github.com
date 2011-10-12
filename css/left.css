@@ -1,0 +1,14 @@
+span {
+    display: block;
+    text-align: right;
+    padding-right: 5px;
+    color: #547B97;
+    font-size: 22px;
+}
+#footer {
+    position: absolute;
+    bottom: 0px;
+    text-align: right;
+    color: #547B97;
+    width: 245px;
+}

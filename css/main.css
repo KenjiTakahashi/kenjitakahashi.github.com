@@ -1,0 +1,57 @@
+body {
+    overflow: hidden;
+    width: 100%;
+}
+#center {
+    margin-top: -8px;
+    margin-left: 252px;
+    margin-right: 252px;
+    border-right: 2px solid #547B97;
+    border-left: 2px solid #547B97;
+    padding-bottom: 2000px;
+    margin-bottom: -2000px;
+}
+#left, #right {
+    margin-top: 15px;
+}
+#left {
+    width: 250px;
+    float: left;
+}
+#right {
+    width: 250px;
+    float: right;
+}
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    float: left;
+    background-color: #547B97;
+    width: 50%;
+}
+li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    line-height: 40px;
+    letter-spacing: 3px;
+}
+li a:hover {
+    color: #BADCDD;
+}
+li .active {
+    color: #212B40;
+}
+#shouter {
+    text-align: right;
+    padding-right: 6px;
+}
+#blog {
+    padding-left: 6px;
+}
+#content {
+    float: left;
+}
