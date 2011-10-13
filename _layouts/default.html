@@ -8,16 +8,16 @@
         <link rel="stylesheet" href="/css/blog.css"/>
         <link rel="stylesheet" href="/css/shout.css"/>
     </head>
+    <body>
+        <div id="left">
+            {% include left.html %}
+        </div>
+        <div id="right">
+            placeholder...
+        </div>
+        <div id="center">
+            {% include menu.html %}
+            {{ content }}
+        </div>
+    </body>
 </html>
-<body>
-    <div id="left">
-        {% include left.html %}
-    </div>
-    <div id="right">
-        placeholder...
-    </div>
-    <div id="center">
-        {% include menu.html %}
-        {{ content }}
-    </div>
-</body>
