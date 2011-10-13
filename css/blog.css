@@ -1,0 +1,16 @@
+.title {
+    padding: 4px;
+    background-color: #547B97;
+}
+.title a {
+    display: block;
+    float: left;
+    text-decoration: none;
+}
+.date {
+    text-align: right;
+    display: block;
+}
+.content {
+    padding: 4px;
+}

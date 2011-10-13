@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
     width: 100%;
+    color: #212B40;
 }
 #center {
     margin-top: -8px;
@@ -12,7 +13,7 @@ body {
     margin-bottom: -2000px;
 }
 #left, #right {
-    margin-top: 15px;
+    margin-top: 45px;
 }
 #left {
     width: 250px;
@@ -35,15 +36,20 @@ li {
 li a {
     display: block;
     text-decoration: none;
-    color: white;
     line-height: 40px;
     letter-spacing: 3px;
 }
-li a:hover {
+a {
+    color: white;
+}
+a:hover {
     color: #BADCDD;
 }
-li .active {
+.active {
     color: #212B40;
+}
+.passive {
+    color: white;
 }
 #shouter {
     text-align: right;
@@ -51,7 +57,4 @@ li .active {
 }
 #blog {
     padding-left: 6px;
-}
-#content {
-    float: left;
 }
