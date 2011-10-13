@@ -12,3 +12,9 @@
     color: #547B97;
     width: 245px;
 }
+#projects a {
+    color: #547B97;
+}
+#projects a:hover {
+    color: #212B40;
+}
