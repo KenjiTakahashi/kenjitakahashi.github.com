@@ -4,7 +4,7 @@ title: Blog
 ---
 
 {% for post in site.posts %}
-    {% if post.type != 'shout' %}
+    {% if post.type == 'post' %}
         {% if page.url contains post.url %}
         <div class="title">
             <a class="active" href="{{ post.url }}">{{ post.title }}</a>
