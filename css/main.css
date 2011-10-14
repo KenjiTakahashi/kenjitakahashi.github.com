@@ -1,10 +1,12 @@
 body {
-    overflow: hidden;
     width: 100%;
     color: #212B40;
 }
-#center {
+#container {
+    overflow: hidden;
     margin-top: -8px;
+}
+#center {
     margin-left: 252px;
     margin-right: 252px;
     border-right: 2px solid #547B97;
@@ -27,6 +29,7 @@ ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+    height: 40px;
 }
 li {
     float: left;
