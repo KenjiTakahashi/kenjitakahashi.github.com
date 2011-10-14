@@ -1,6 +1,17 @@
 ---
 layout: default
-title: Main
+title: Shouter
 ---
 
-<div id="content">just a mock...</div>
+{% for post in site.posts %}
+    {% if post.type == 'shout' %}
+    <div class="content">
+        <div class="datetime">
+            {{ post.datetime }}:
+        </div>
+        <div class="scontent">
+            {{ post.content }}
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
