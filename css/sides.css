@@ -12,9 +12,12 @@
     color: #547B97;
     width: 245px;
 }
-#projects a {
+.sidenotes a {
     color: #547B97;
 }
-#projects a:hover {
+.sidenotes a:hover {
     color: #212B40;
+}
+#right a {
+    padding-left: 5px;
 }

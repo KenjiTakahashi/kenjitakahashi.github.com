@@ -4,17 +4,17 @@
         <title>Kenji Takahashi :: {{ page.title }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link type="text/css" rel="stylesheet" href="/css/main.css"/>
-        <link type="text/css" rel="stylesheet" href="/css/left.css"/>
         <link type="text/css" rel="stylesheet" href="/css/blog.css"/>
         <link type="text/css" rel="stylesheet" href="/css/shout.css"/>
+        <link type="text/css" rel="stylesheet" href="/css/sides.css"/>
     </head>
     <body>
         <div id="container">
             <div id="left">
                 {% include left.html %}
             </div>
-            <div id="right">
-                placeholder...
+            <div id="right" class="sidenotes">
+                {% tag_cloud %}
             </div>
             {% include menu.html %}
             <div id="center">
