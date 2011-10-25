@@ -1,6 +1,6 @@
 @@site_url = 'http://www.kenjitakahashi.github.com'
 
-task :cloud_basic do
+task :cloud do
   puts 'Generating tag cloud...'
   require 'rubygems'
   require 'jekyll'
@@ -19,47 +19,6 @@ task :cloud_basic do
   end
 
   File.open('_includes/tags.html', 'w+') do |file|
-    file.puts html
-  end
-
-  puts 'Done.'
-end
-
-task :cloud do
-  puts 'Generating tag cloud...'
-  require 'rubygems'
-  require 'jekyll'
-  include Jekyll::Filters
-
-  options = Jekyll.configuration({})
-  site = Jekyll::Site.new(options)
-  site.read_posts('')
-
-  html =<<-HTML
----
-layout: default
-title: Tags
-type: A tag cloud
----
-
-<h1>Tag cloud for {{site.title}}</h1>
-
-    <p>Click on a tag to see the relevant posts.</p>
-    HTML
-
-  site.tags.sort.each do |tag, posts|
-    next if tag == ".net"
-    html << <<-HTML
-    HTML
-
-    s = posts.count
-    font_size = 12 + (s*1.5);
-    html << "<a href=\"#{@@site_url}/tag/#{tag}/\" title=\"Entries tagged #{tag}\" style=\"font-size: #{font_size}px; line-height:#{font_size}px\">#{tag}</a> "
-  end
-
-  html << "<p>You may also wish to browse the <a href=\"#{@@site_url}/archives/\" title=\"Archives for {{site.title}}\">archives</a>."
-
-  File.open('tags/index.html', 'w+') do |file|
     file.puts html
   end
 
