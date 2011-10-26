@@ -14,7 +14,11 @@
                 {% include left.html %}
             </div>
             <div id="right" class="sidenotes">
-                {% include tags.html %}
+                {% if page.title == 'Shouter' %}
+                {% include shouter_tags.html %}
+                {% else %}
+                {% include blog_tags.html %}
+                {% endif %}
             </div>
             {% include menu.html %}
             <div id="center">
