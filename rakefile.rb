@@ -53,7 +53,7 @@ task :tags do
       html << <<-HTML
 ---
 type: shout
-layout: default
+layout: shouter
 title: Shouts tagged "#{tag}"
 tag: #{tag}
 ---
