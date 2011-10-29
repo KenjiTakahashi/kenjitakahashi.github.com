@@ -18,10 +18,10 @@ task :cloud do
     shout_font_size = 12 + (shout_s * 1.3)
     blog_font_size = 12 + (blog_s * 1.3)
     if shout_s > 0
-      shouter_html << "<a href=\"/tag/shouter/#{tag}/\" title=\"Pages tagged #{tag}\" style=\"font-size: #{shout_font_size}px; line-height:#{shout_font_size}px\" rel=\"tag\">#{tag}</a>"
+      shouter_html << "<a href=\"/tag/shouter/#{tag}.html\" title=\"Pages tagged #{tag}\" style=\"font-size: #{shout_font_size}px; line-height: #{shout_font_size}px\" rel=\"tag\">#{tag}</a>"
     end
     if blog_s > 0
-      blog_html << "<a href=\"/tag/blog/#{tag}/\" title=\"Entires tagged #{tag}\" style=\"font-size: #{blog_font_size}px; line-height: #{blog_font_size}px\" rel=\"tag\">#{tag}</a>"
+      blog_html << "<a href=\"/tag/blog/#{tag}.html\" title=\"Entires tagged #{tag}\" style=\"font-size: #{blog_font_size}px; line-height: #{blog_font_size}px\" rel=\"tag\">#{tag}</a>"
     end
   end
 
@@ -46,31 +46,37 @@ task :tags do
   site = Jekyll::Site.new(options)
   site.read_posts('')
   site.tags.sort.each do |tag, posts|
-
+    shouts = posts.select {|p| p if p.data['type'] == 'shout'}
+    blogs = posts.select {|p| p if p.data['type'] == 'post'}
     html = ''
-    html << <<-HTML
-  ---
-  layout: default
-  title: Entries tagged "#{tag}"
-  type: "#{tag.gsub(/\b\w/){$&.upcase}}"
-  ---
-      <h1 id="#{tag}">Entries tagged "#{tag}"</h1>
-      <a href="#{@@site_url}/tags/" title="Tag cloud for {{site.title}}">&laquo; Show all tags...</a>
-      HTML
-
-    html << '<ul class="posting_list">'
-    posts.each do |post|
-      post_data = post.to_liquid
+    if shouts.count > 0
       html << <<-HTML
-        <li><a href="#{@@site_url}/#{post.url}" rel="tag" title="Entries tagged #{post_data['title']}">#{post_data['title']}</a></li>
-      HTML
+---
+type: shout
+layout: default
+title: Shouts tagged "#{tag}"
+tag: #{tag}
+---
+HTML
+      FileUtils.mkdir_p "tag/shouter"
+      File.open("tag/shouter/#{tag}.html", 'w+') do |file|
+        file.puts html
+      end
     end
-    html << '</ul>'
-
-    html << '<p>You may also be interested in browsing the <a href="#'+@@site_url+'/archives/" title="Archives for {{site.title}}">archives</a> or seeing <a href="'+@@site_url+'/tags/" title="Tag cloud for {{site.title}}">the tag cloud for {{site.title}}</a>.'
-    FileUtils.mkdir_p "tag/#{tag}"
-    File.open("tag/#{tag}/index.html", 'w+') do |file|
-      file.puts html
+    html = ''
+    if blogs.count > 0
+      html << <<-HTML
+---
+type: blog
+layout: blog
+title: Posts tagged "#{tag}"
+tag: #{tag}
+---
+HTML
+      FileUtils.mkdir_p "tag/blog"
+      File.open("tag/blog/#{tag}.html", 'w+') do |file|
+        file.puts html
+      end
     end
   end
   puts 'Done.'

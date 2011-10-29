@@ -4,12 +4,12 @@
 }
 .title a {
     display: block;
-    float: left;
     text-decoration: none;
 }
 .date {
     text-align: right;
     display: block;
+    float: right;
 }
 .content {
     padding: 4px;

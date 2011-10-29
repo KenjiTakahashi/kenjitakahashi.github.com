@@ -56,9 +56,6 @@ a:hover {
 .active {
     color: #212B40;
 }
-.passive {
-    color: white;
-}
 #shouter {
     text-align: right;
     padding-right: 6px;
