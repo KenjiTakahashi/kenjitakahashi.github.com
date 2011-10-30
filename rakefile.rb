@@ -58,10 +58,10 @@ title: Shouts tagged "#{tag}"
 tag: #{tag}
 ---
 HTML
-      FileUtils.mkdir_p "tag/shouter"
-      File.open("tag/shouter/#{tag}.html", 'w+') do |file|
-        file.puts html
-      end
+    end
+    FileUtils.mkdir_p "tag/shouter"
+    File.open("tag/shouter/#{tag}.html", 'w+') do |file|
+      file.puts html
     end
     html = ''
     if blogs.count > 0
@@ -73,10 +73,10 @@ title: Posts tagged "#{tag}"
 tag: #{tag}
 ---
 HTML
-      FileUtils.mkdir_p "tag/blog"
-      File.open("tag/blog/#{tag}.html", 'w+') do |file|
-        file.puts html
-      end
+    end
+    FileUtils.mkdir_p "tag/blog"
+    File.open("tag/blog/#{tag}.html", 'w+') do |file|
+      file.puts html
     end
   end
   puts 'Done.'
