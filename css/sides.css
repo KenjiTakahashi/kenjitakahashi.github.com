@@ -12,11 +12,17 @@
     color: #547B97;
     width: 245px;
 }
+.sidenotes {
+  font-size: 15px;
+}
 .sidenotes a {
     color: #547B97;
 }
 .sidenotes a:hover {
     color: #212B40;
+}
+.sidenotes span {
+    display: block;
 }
 #right a {
     padding-left: 5px;
