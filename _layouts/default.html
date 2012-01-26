@@ -5,7 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link type="text/css" rel="stylesheet" href="/css/main.css"/>
         <link type="text/css" rel="stylesheet" href="/css/blog.css"/>
-        <link type="text/css" rel="stylesheet" href="/css/shout.css"/>
         <link type="text/css" rel="stylesheet" href="/css/sides.css"/>
     </head>
     <body>
@@ -14,13 +13,8 @@
                 {% include left.html %}
             </div>
             <div id="right" class="sidenotes">
-                {% if page.title == 'Shouter' %}
-                {% include shouter_tags.html %}
-                {% else %}
                 {% include blog_tags.html %}
-                {% endif %}
             </div>
-            {% include menu.html %}
             <div id="center">
                 {{ content }}
             </div>
