@@ -21,7 +21,7 @@
 .sidenotes a:hover {
     color: #212B40;
 }
-.sidenotes span {
+.projects {
     display: block;
 }
 #right a {
@@ -29,4 +29,8 @@
 }
 .unmaintained {
     text-decoration: line-through;
+}
+#calendar {
+    position: fixed;
+    bottom: 0px;
 }

@@ -6,15 +6,17 @@
         <link type="text/css" rel="stylesheet" href="/css/main.css"/>
         <link type="text/css" rel="stylesheet" href="/css/blog.css"/>
         <link type="text/css" rel="stylesheet" href="/css/sides.css"/>
+        <link type="text/css" rel="stylesheet" href="/css/calendar.css"/>
+        <script language="javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script language="javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script language="javascript" src="js/customs.js"></script>
     </head>
     <body>
         <div id="container">
             <div id="left">
                 {% include left.html %}
             </div>
-            <div id="right" class="sidenotes">
-                {% include blog_tags.html %}
-            </div>
+            {% include right.html %}
             <div id="center">
                 {{ content }}
             </div>

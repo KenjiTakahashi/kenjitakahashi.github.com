@@ -1,0 +1,3 @@
+$(document).ready( ->
+    $("#calendar").datepicker()
+)
