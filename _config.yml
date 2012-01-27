@@ -1,1 +1,1 @@
-exclude: rakefile.rb
+exclude: rakefile.rb, customs.coffee
