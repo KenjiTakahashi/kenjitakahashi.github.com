@@ -57,7 +57,7 @@ end
 
 desc "Generate dates/titles for calendar"
 task :calendar do
-  puts "Genereting calendar dates/titles..."
+  puts "Generating calendar dates/titles..."
 
   options = Jekyll.configuration({})
   site = Jekyll::Site.new(options)
