@@ -65,7 +65,7 @@ task :calendar do
 
   dates = {}
   site.posts.each do |post|
-    (dates[post.date.to_s[0..9]] ||= []) << [post.data['title'], post.url]
+    (dates[post.date.to_s[0..9]] ||= []) << [post.data['title'][0..34] + (post.data['title'].length > 34 ? '...' : ''), post.url]
   end
 
   File.open('js/customs.coffee.2', 'w') do |f|

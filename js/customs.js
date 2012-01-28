@@ -3,6 +3,7 @@
 
   dates = {
     "2012-01-01": [["A Test", "/2012/01/01/a-test.html"]],
+    "2012-01-02": [["a very long title to test side-pane...", "/2012/01/02/a-long-title.html"]],
     "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]
   };
 
@@ -13,12 +14,26 @@
     return this._notifyChange(this._getInst($(id)[0]));
   };
 
+  jQuery.datepicker.oldSelectDate = jQuery.datepicker._selectDate;
+
+  jQuery.datepicker._selectDate = function(id, dateStr) {
+    jQuery.datepicker.oldSelectDate(id, dateStr);
+    return this._notifyChange(this._getInst($(id)[0]));
+  };
+
   $(document).ready(function() {
-    var callback, options;
+    var arrowsWidth, callback, options;
     options = {
       direction: 'down',
       duration: 'medium',
       easing: 'easeOutQuart'
+    };
+    arrowsWidth = function() {
+      var $title, width;
+      $title = $(".ui-datepicker-title");
+      width = (252 - parseInt($title.css('width'))) / 2;
+      $(".ui-datepicker-next, .ui-datepicker-prev").width(width);
+      return $title.css('display', 'block');
     };
     callback = function($base, dateText) {
       var $href, date, v, _i, _len, _ref, _ref2;
@@ -51,12 +66,10 @@
         });
         $base.append($href);
       }
-      $base.css({
-        bottom: $("#calendar").css('height')
-      });
+      $base.css('bottom', $("#calendar").css('height'));
       return $base.toggle('slide', options);
     };
-    return $("#calendar").datepicker({
+    $("#calendar").datepicker({
       showOtherMonths: true,
       selectOtherMonths: true,
       beforeShowDay: function(date) {
@@ -84,12 +97,12 @@
         var $base;
         $base = $("#events");
         if ($base.css('display') !== 'none') {
-          return $base.css({
-            bottom: $("#calendar").css('height')
-          });
+          $base.css('bottom', $("#calendar").css('height'));
         }
+        return arrowsWidth();
       }
     });
+    return arrowsWidth();
   });
 
 }).call(this);

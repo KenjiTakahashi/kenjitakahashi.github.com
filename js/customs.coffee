@@ -1,7 +1,11 @@
-dates = {"2012-01-01": [["A Test", "/2012/01/01/a-test.html"]], "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]}
+dates = {"2012-01-01": [["A Test", "/2012/01/01/a-test.html"]], "2012-01-02": [["a very long title to test side-pane...", "/2012/01/02/a-long-title.html"]], "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]}
 jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate
 jQuery.datepicker._adjustDate = (id, offset, period) ->
     jQuery.datepicker.oldAdjustDate(id, offset, period)
+    this._notifyChange(this._getInst($(id)[0]))
+jQuery.datepicker.oldSelectDate = jQuery.datepicker._selectDate
+jQuery.datepicker._selectDate = (id, dateStr) ->
+    jQuery.datepicker.oldSelectDate(id, dateStr)
     this._notifyChange(this._getInst($(id)[0]))
 $(document).ready( ->
     options = {
@@ -9,6 +13,11 @@ $(document).ready( ->
         duration: 'medium'
         easing: 'easeOutQuart'
     }
+    arrowsWidth = ->
+        $title = $(".ui-datepicker-title")
+        width = (252 - parseInt($title.css('width'))) / 2
+        $(".ui-datepicker-next, .ui-datepicker-prev").width(width)
+        $title.css('display', 'block')
     callback = ($base, dateText) ->
         $base.empty()
         date = dateText.split('/').reverse()
@@ -32,9 +41,7 @@ $(document).ready( ->
                 })
             )
             $base.append($href)
-        $base.css({
-            bottom: $("#calendar").css('height')
-        })
+        $base.css('bottom', $("#calendar").css('height'))
         $base.toggle('slide', options)
     $("#calendar").datepicker({
         showOtherMonths: true
@@ -53,8 +60,8 @@ $(document).ready( ->
         onChangeMonthYear: (year, month, inst) ->
             $base = $("#events")
             if $base.css('display') != 'none'
-                $base.css({
-                    bottom: $("#calendar").css('height')
-                })
+                $base.css('bottom', $("#calendar").css('height'))
+            arrowsWidth()
     })
+    arrowsWidth()
 )

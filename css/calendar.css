@@ -1,31 +1,31 @@
 .ui-datepicker {
     width: 258px;
 }
-.ui-datepicker .ui-datepicker-header {
+.ui-datepicker-header {
     padding: .3em 0;
     background-color: #547B97;
     color: white;
 }
-.ui-datepicker .ui-datepicker-title {
+.ui-datepicker-title {
+    display: inline-block;
     text-align: center;
 }
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
-    /*width: 90px;*/
+.ui-datepicker-prev, .ui-datepicker-next {
     height: 1.8em;
 }
-.ui-datepicker .ui-datepicker-prev {
+.ui-datepicker-prev {
     float: left;
     background: url("/images/left_n2.png") no-repeat right top;
 }
-.ui-datepicker .ui-datepicker-prev-hover {
-    background: url("/images/left_h.png") no-repeat right top;
+.ui-datepicker-prev-hover {
+    background: url("/images/left_h2.png") no-repeat right top;
 }
-.ui-datepicker .ui-datepicker-next {
+.ui-datepicker-next {
     float: right;
-    background: url("/images/right_n.png") no-repeat;
+    background: url("/images/right_n2.png") no-repeat;
 }
-.ui-datepicker .ui-datepicker-next-hover {
-    background: url("/images/right_h.png") no-repeat;
+.ui-datepicker-next-hover {
+    background: url("/images/right_h2.png") no-repeat;
 }
 .ui-datepicker table {
     width: 100%;
@@ -57,6 +57,9 @@
 }
 .ui-datepicker-other-month {
     color: #BADCDD;
+}
+.ui-datepicker-current-day {
+    font-weight: bold;
 }
 .ui-state-disabled {
     color: white;

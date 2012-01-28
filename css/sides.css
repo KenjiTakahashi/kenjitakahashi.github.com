@@ -24,9 +24,6 @@
 .projects {
     display: block;
 }
-#right a {
-    padding-left: 5px;
-}
 .unmaintained {
     text-decoration: line-through;
 }
