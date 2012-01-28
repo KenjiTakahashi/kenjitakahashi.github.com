@@ -1,10 +1,10 @@
 .title {
     padding: 4px;
+    color: white;
     background-color: #547B97;
-}
-.title a {
-    display: block;
-    text-decoration: none;
+    position: fixed;
+    left: 258px;
+    right: 258px;
 }
 .date {
     text-align: right;
@@ -12,5 +12,6 @@
     float: right;
 }
 .content {
+    margin-top: 12px;
     padding: 4px;
 }

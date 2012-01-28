@@ -14,7 +14,22 @@ $(document).ready( ->
         date = dateText.split('/').reverse()
         [date[1], date[2]] = [date[2], date[1]]
         for v in dates[date.join('-')]
-            $base.append($("<a class='event' href='##{v[1]}'>").text(v[0]))
+            $href = $("<a class='event' href='##{v[1]}'>").text(v[0])
+            $href.click( ->
+                $.ajax({
+                    url: v[1]
+                    success: (html) ->
+                        $center = $("#center")
+                        $center.hide()
+                        $center.append(html)
+                        $center.children().hide()
+                        $center.show()
+                        $center.children(".title").show('slide', ->
+                            $center.children(".content").show('blind')
+                        )
+                })
+            )
+            $base.append($href)
         $base.css({
             bottom: $("#calendar").css('height')
         })

@@ -21,14 +21,31 @@
       easing: 'easeOutQuart'
     };
     callback = function($base, dateText) {
-      var date, v, _i, _len, _ref, _ref2;
+      var $href, date, v, _i, _len, _ref, _ref2;
       $base.empty();
       date = dateText.split('/').reverse();
       _ref = [date[2], date[1]], date[1] = _ref[0], date[2] = _ref[1];
       _ref2 = dates[date.join('-')];
       for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
         v = _ref2[_i];
-        $base.append($("<a class='event' href='#" + v[1] + "'>").text(v[0]));
+        $href = $("<a class='event' href='#" + v[1] + "'>").text(v[0]);
+        $href.click(function() {
+          return $.ajax({
+            url: v[1],
+            success: function(html) {
+              var $center;
+              $center = $("#center");
+              $center.hide();
+              $center.append(html);
+              $center.children().hide();
+              $center.show();
+              return $center.children(".title").show('slide', function() {
+                return $center.children(".content").show('blind');
+              });
+            }
+          });
+        });
+        $base.append($href);
       }
       $base.css({
         bottom: $("#calendar").css('height')
