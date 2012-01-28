@@ -61,3 +61,13 @@
 .ui-state-disabled {
     color: white;
 }
+/* events */
+#events {
+    display: none;
+    width: 258px;
+    border-top: #547B97 solid 2px;
+    position: fixed;
+}
+.event {
+    display: block;
+}

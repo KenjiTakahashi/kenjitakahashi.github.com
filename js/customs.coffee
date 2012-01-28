@@ -1,8 +1,24 @@
-dates = {
-    '2012-01-01': ['sth']
-    '2012-01-04': []
-}
+dates = {"2012-01-01": [["A Test", "/2012/01/01/a-test.html"]], "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]}
+jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate
+jQuery.datepicker._adjustDate = (id, offset, period) ->
+    jQuery.datepicker.oldAdjustDate(id, offset, period)
+    this._notifyChange(this._getInst($(id)[0]))
 $(document).ready( ->
+    options = {
+        direction: 'down'
+        duration: 'medium'
+        easing: 'easeOutQuart'
+    }
+    callback = ($base, dateText) ->
+        $base.empty()
+        date = dateText.split('/').reverse()
+        [date[1], date[2]] = [date[2], date[1]]
+        for v in dates[date.join('-')]
+            $base.append($("<a class='event' href='##{v[1]}'>").text(v[0]))
+        $base.css({
+            bottom: $("#calendar").css('height')
+        })
+        $base.toggle('slide', options)
     $("#calendar").datepicker({
         showOtherMonths: true
         selectOtherMonths: true
@@ -12,6 +28,16 @@ $(document).ready( ->
                     return [true, '']
             return [false, '']
         onSelect: (dateText, inst) ->
-            alert(new Date(dateText))
+            $base = $("#events")
+            if $base.css('display') != 'none'
+                $base.toggle('slide', options, -> callback($base, dateText))
+            else
+                callback($base, dateText)
+        onChangeMonthYear: (year, month, inst) ->
+            $base = $("#events")
+            if $base.css('display') != 'none'
+                $base.css({
+                    bottom: $("#calendar").css('height')
+                })
     })
 )

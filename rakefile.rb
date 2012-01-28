@@ -1,8 +1,9 @@
+require 'rubygems'
+require 'jekyll'
+
 desc 'Generate tag cloud'
 task :cloud do
   puts 'Generating tag cloud...'
-  require 'rubygems'
-  require 'jekyll'
   include Jekyll::Filters
 
   options = Jekyll.configuration({})
@@ -27,13 +28,12 @@ end
 desc 'Generate tags pages'
 task :tags do
   puts "Generating tags..."
-  require 'rubygems'
-  require 'jekyll'
   include Jekyll::Filters
 
   options = Jekyll.configuration({})
   site = Jekyll::Site.new(options)
   site.read_posts('')
+
   site.tags.sort.each do |tag, posts|
     blogs = posts.count
     html = ''
@@ -52,5 +52,30 @@ HTML
       file.puts html
     end
   end
+  puts 'Done.'
+end
+
+desc "Generate dates/titles for calendar"
+task :calendar do
+  puts "Genereting calendar dates/titles..."
+
+  options = Jekyll.configuration({})
+  site = Jekyll::Site.new(options)
+  site.read_posts('')
+
+  dates = {}
+  site.posts.each do |post|
+    (dates[post.date.to_s[0..9]] ||= []) << [post.data['title'], post.url]
+  end
+
+  File.open('js/customs.coffee.2', 'w') do |f|
+    f.puts 'dates = ' + dates.to_s.gsub('=>',': ')
+    File.foreach('js/customs.coffee').with_index do |ff, i|
+      if i != 0 or ff[0] != 'd'
+        f.puts ff
+      end
+    end
+  end
+  File.rename('js/customs.coffee.2', 'js/customs.coffee')
   puts 'Done.'
 end

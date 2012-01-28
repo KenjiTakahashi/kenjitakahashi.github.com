@@ -2,11 +2,39 @@
   var dates;
 
   dates = {
-    '2012-01-01': ['sth'],
-    '2012-01-04': []
+    "2012-01-01": [["A Test", "/2012/01/01/a-test.html"]],
+    "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]
+  };
+
+  jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate;
+
+  jQuery.datepicker._adjustDate = function(id, offset, period) {
+    jQuery.datepicker.oldAdjustDate(id, offset, period);
+    return this._notifyChange(this._getInst($(id)[0]));
   };
 
   $(document).ready(function() {
+    var callback, options;
+    options = {
+      direction: 'down',
+      duration: 'medium',
+      easing: 'easeOutQuart'
+    };
+    callback = function($base, dateText) {
+      var date, v, _i, _len, _ref, _ref2;
+      $base.empty();
+      date = dateText.split('/').reverse();
+      _ref = [date[2], date[1]], date[1] = _ref[0], date[2] = _ref[1];
+      _ref2 = dates[date.join('-')];
+      for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+        v = _ref2[_i];
+        $base.append($("<a class='event' href='#" + v[1] + "'>").text(v[0]));
+      }
+      $base.css({
+        bottom: $("#calendar").css('height')
+      });
+      return $base.toggle('slide', options);
+    };
     return $("#calendar").datepicker({
       showOtherMonths: true,
       selectOtherMonths: true,
@@ -21,7 +49,24 @@
         return [false, ''];
       },
       onSelect: function(dateText, inst) {
-        return alert(new Date(dateText));
+        var $base;
+        $base = $("#events");
+        if ($base.css('display') !== 'none') {
+          return $base.toggle('slide', options, function() {
+            return callback($base, dateText);
+          });
+        } else {
+          return callback($base, dateText);
+        }
+      },
+      onChangeMonthYear: function(year, month, inst) {
+        var $base;
+        $base = $("#events");
+        if ($base.css('display') !== 'none') {
+          return $base.css({
+            bottom: $("#calendar").css('height')
+          });
+        }
       }
     });
   });
