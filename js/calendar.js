@@ -2,9 +2,9 @@
   var dates;
 
   dates = {
-    "2012-01-01": [["A Test", "/2012/01/01/a-test.html"]],
+    "2012-01-01": [["A Test...", "/2012/01/01/a-test.html"]],
     "2012-01-02": [["a very long title to test side-pane...", "/2012/01/02/a-long-title.html"]],
-    "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]
+    "2012-01-14": [["Another test...", "/2012/01/14/test-2.html"], ["testing 2-on-1...", "/2012/01/14/test-3.html"]]
   };
 
   jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate;
