@@ -2,9 +2,9 @@
   var dates;
 
   dates = {
-    "2012-01-01": [["A Test...", "/2012/01/01/a-test.html"]],
+    "2012-01-01": [["A Test", "/2012/01/01/a-test.html"]],
     "2012-01-02": [["a very long title to test side-pane...", "/2012/01/02/a-long-title.html"]],
-    "2012-01-14": [["Another test...", "/2012/01/14/test-2.html"], ["testing 2-on-1...", "/2012/01/14/test-3.html"]]
+    "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]]
   };
 
   jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate;
@@ -24,7 +24,6 @@
   $(document).ready(function() {
     var arrowsWidth, callback, options;
     options = {
-      direction: 'down',
       duration: 'medium',
       easing: 'easeOutQuart'
     };
@@ -45,28 +44,17 @@
         v = _ref2[_i];
         $href = $("<a class='event' href='#" + v[1] + "'>").text(v[0]);
         $href.click(function() {
-          return $.ajax({
-            url: v[1],
-            success: function(html) {
-              var $center;
-              $center = $("#center");
-              return $center.hide('highlight', {
-                color: "#FFFFFF"
-              }, function() {
-                $center.empty();
-                $center.append(html);
-                $center.children().hide();
-                $center.show();
-                return $center.children(".title").show('slide', function() {
-                  return $center.children(".content").show('blind');
-                });
-              });
-            }
-          });
+          return ajax(v[1]);
         });
         $base.append($href);
       }
       $base.css('bottom', $("#calendar").css('height'));
+      $base.css({
+        top: 'auto',
+        bottom: $("#calendar").css('height')
+      });
+      $base.attr('id', 'events_cal');
+      options['direction'] = 'down';
       return $base.toggle('slide', options);
     };
     $("#calendar").datepicker({
@@ -84,8 +72,9 @@
       },
       onSelect: function(dateText, inst) {
         var $base;
-        $base = $("#events");
+        $base = $(".events");
         if ($base.css('display') !== 'none') {
+          if ($base.children('a').hasClass('tag')) options['direction'] = 'up';
           return $base.toggle('slide', options, function() {
             return callback($base, dateText);
           });
@@ -95,9 +84,9 @@
       },
       onChangeMonthYear: function(year, month, inst) {
         var $base;
-        $base = $("#events");
-        if ($base.css('display') !== 'none') {
-          $base.css('bottom', $("#calendar").css('height'));
+        $base = $(".events");
+        if ($base.css('display') !== 'none' && $base.children('a').hasClass('event')) {
+          $base.css('bottom', parseInt($("#calendar").css('height')) + 5);
         }
         return arrowsWidth();
       }

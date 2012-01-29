@@ -27,6 +27,12 @@
 .unmaintained {
     text-decoration: line-through;
 }
+#cloud {
+    position: fixed;
+    top: 0px;
+    border-bottom: #547B97 solid 2px;
+    width: 258px;
+}
 #calendar {
     position: fixed;
     bottom: 0px;
