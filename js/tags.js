@@ -18,8 +18,10 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         p = _ref[_i];
         $href = $("<a class='tag' href='#" + p[1] + "'>").text(p[0]);
-        $href.click(function() {
-          return ajax(p[1]);
+        $href.bind('click', {
+          url: p[1]
+        }, function(event) {
+          return ajax(event.data.url);
         });
         $base.append($href);
       }

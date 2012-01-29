@@ -8,8 +8,8 @@ $(document).ready( ->
         $base.empty()
         for p in tags[text]
             $href = $("<a class='tag' href='##{p[1]}'>").text(p[0])
-            $href.click( ->
-                ajax(p[1])
+            $href.bind('click', {url: p[1]}, (event) ->
+                ajax(event.data.url)
             )
             $base.append($href)
         $base.css({

@@ -23,9 +23,9 @@ $(document).ready( ->
         [date[1], date[2]] = [date[2], date[1]]
         for v in dates[date.join('-')]
             $href = $("<a class='event' href='##{v[1]}'>").text(v[0])
-            $href.click( ->
-                ajax(v[1])
-            )
+            $href.bind('click', {url: v[1]}, (event) ->
+                ajax(event.data.url)
+            ) # had to do it this way, because of JS scoping-thingies...
             $base.append($href)
         $base.css('bottom', $("#calendar").css('height'))
         $base.css({
