@@ -1,0 +1,5 @@
+---
+layout: blog
+title: Another test
+---
+test test test
