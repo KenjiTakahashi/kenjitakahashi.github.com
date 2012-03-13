@@ -2,3 +2,17 @@
 layout: default
 title: Blog
 ---
+
+<div class="title">
+    {{ site.posts.first.title }}
+    <span class="date">{{ site.posts.first.date | date_to_long_string }}</span>
+</div>
+<div class="content">
+    {{ site.posts.first.content | markdownify }}
+</div>
+<div id="livefyre"></div>
+<script type='text/javascript'>
+    var fyre = LF({
+        site_id: 296754
+    });
+</script>
