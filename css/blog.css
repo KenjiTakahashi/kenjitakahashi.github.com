@@ -13,5 +13,17 @@
 }
 .content {
     margin-top: 12px;
-    padding: 4px;
+    padding: 10px 25px;
+    text-align: justify;
+}
+.content a {
+    color: #547B97;
+}
+.content a:hover {
+    color: #212B40;
+}
+.notice {
+    background: #7B1919;
+    margin-top: 30px;
+    padding: 20px;
 }

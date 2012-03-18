@@ -1,4 +1,4 @@
-tags = {"testtag1": [["A Test", "/2012/01/01/a-test.html"]]}
+tags = {"calendar": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]], "datepicker": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]], "javascript": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]], "jquery": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]], "testtag1": [["A Test", "/2012/01/01/a-test.html"]], "this": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]], "ui": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]]}
 $(document).ready( ->
     options = {
         duration: 'medium'

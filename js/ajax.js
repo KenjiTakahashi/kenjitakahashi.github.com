@@ -14,16 +14,7 @@
         $center.children(".title").show('slide', function() {
           return $center.children(".content").show('blind');
         });
-        $center.children("#disqus_thread").show();
-        return $("#disqus_thread").disqus({
-          domain: 'kenjitakahashi',
-          title: document.title,
-          developer: 1,
-          show_count: true,
-          ready: function() {
-            return console.log(1);
-          }
-        });
+        return $center.children("#livefyre").show();
       });
     });
   };
