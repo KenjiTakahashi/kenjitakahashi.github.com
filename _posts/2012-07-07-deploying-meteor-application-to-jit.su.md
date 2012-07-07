@@ -13,7 +13,7 @@ I suddenly liked the approach and thought about basing the upgraded blog on this
 So I started looking for an node.js hosting, because meteor uses it server-side and I've found a nice one at [nodejitsu.com][jitsu] (or [jit.su][jitsu] for short).
 While creating new apps is really simple, using their `jitsu` tool, deploying meteor app involves some more work to do.
 
-The main "problem" here is that meteor creates a bundle, which locally includes everything, including external dependencies. While usually it should be no problem, jit.su seems to ignore local node_packages directories, thus refusing to work this way.
+The main "problem" here is that meteor creates a bundle, which locally includes everything, including external dependencies. While usually it should be no problem, jit.su seems to ignore local node_modules directories, thus refusing to work this way.
 
 To resolve it, I've checked what meteor needs to run and extended the package.json file (which is the "core" of jit.su app including all necessary informations for the server) to make it aware if them. The extension is
 
