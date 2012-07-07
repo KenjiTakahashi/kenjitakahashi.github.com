@@ -28,9 +28,6 @@ To resolve it, I've checked what meteor needs to run and extended the package.js
         "mime": "1.2.x",
         "sockjs": "0.3.x",
         "mongodb": "1.0.x",
-        "coffee-script": "1.3.x",
-        "blade": "1.3.x",
-        "stylus": "0.27.x"
     }
 
 So the whole file will be something like this
@@ -56,9 +53,6 @@ So the whole file will be something like this
             "mime": "1.2.x",
             "sockjs": "0.3.x",
             "mongodb": "1.0.x",
-            "coffee-script": "1.3.x",
-            "blade": "1.3.x",
-            "stylus": "0.27.x"
         }
     }
 
