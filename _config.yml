@@ -1,2 +1,1 @@
 exclude: rakefile.rb, tags.coffee, calendar.coffee, ajax.coffee
-pygments: true
