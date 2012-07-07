@@ -1,4 +1,4 @@
-dates = {"2012-01-01": [["A Test", "/2012/01/01/a-test.html"]], "2012-01-02": [["a very long title to test side-pane...", "/2012/01/02/a-long-title.html"]], "2012-01-14": [["Another test", "/2012/01/14/test-2.html"], ["testing 2-on-1", "/2012/01/14/test-3.html"]], "2012-03-18": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]]}
+dates = {"2012-03-18": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]], "2012-07-07": [["Deploying meteor application to jit...", "/2012/07/07/deploying-meteor-application-to-jit.su.html"]]}
 jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate
 jQuery.datepicker._adjustDate = (id, offset, period) ->
     jQuery.datepicker.oldAdjustDate(id, offset, period)
