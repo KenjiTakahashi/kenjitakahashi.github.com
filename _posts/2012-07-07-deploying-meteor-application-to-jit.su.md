@@ -17,7 +17,7 @@ The main "problem" here is that meteor creates a bundle, which locally includes 
 
 To resolve it, I've checked what meteor needs to run and extended the package.json file (which is the "core" of jit.su app including all necessary informations for the server) to make it aware if them. The extension is
 
-{% highlight ruby %}
+{% highlight json %}
 "dependencies": {
     "fibers": "0.6.x",
     "optimist": "0.3.x",
@@ -36,33 +36,36 @@ To resolve it, I've checked what meteor needs to run and extended the package.js
 {% endhighlight %}
 
 So the whole file will be something like this
-
-    {
-        "name": "<your_name>",
-        "subdomain": "<choosen_subdomain>",
-        "scripts": {
-            "start": "main.js"
-        },
-        "version": "<snapshot_version>",
-        "engines": {
-            "node": "0.6.x"
-        },
-        "dependencies": {
-            "fibers": "0.6.x",
-            "optimist": "0.3.x",
-            "handlebars": "1.0.x",
-            "mime": "1.2.x",
-            "gzippo": "0.1.x",
-            "useragent": "1.0.x",
-            "connect": "2.3.x",
-            "mime": "1.2.x",
-            "sockjs": "0.3.x",
-            "mongodb": "1.0.x",
-            "coffee-script": "1.3.x",
-            "blade": "1.3.x",
-            "stylus": "0.27.x"
-        }
+{% highlight json %}
+`
+{
+    "name": "<your_name>",
+    "subdomain": "<choosen_subdomain>",
+    "scripts": {
+        "start": "main.js"
+    },
+    "version": "<snapshot_version>",
+    "engines": {
+        "node": "0.6.x"
+    },
+    "dependencies": {
+        "fibers": "0.6.x",
+        "optimist": "0.3.x",
+        "handlebars": "1.0.x",
+        "mime": "1.2.x",
+        "gzippo": "0.1.x",
+        "useragent": "1.0.x",
+        "connect": "2.3.x",
+        "mime": "1.2.x",
+        "sockjs": "0.3.x",
+        "mongodb": "1.0.x",
+        "coffee-script": "1.3.x",
+        "blade": "1.3.x",
+        "stylus": "0.27.x"
     }
+}
+`
+{% endhighlight %}
 
 After this addition, deployment to jit.su should go smoothly and create a running meteor application.
 
