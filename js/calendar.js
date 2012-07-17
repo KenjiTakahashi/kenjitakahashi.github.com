@@ -4,7 +4,8 @@
 
   dates = {
     "2012-03-18": [["Calendar to the right.", "/2012/03/18/calendar-to-the-right.html"]],
-    "2012-07-07": [["Deploying meteor application to jit...", "/2012/07/07/deploying-meteor-application-to-jit.su.html"]]
+    "2012-07-07": [["Deploying meteor application to jit...", "/2012/07/07/deploying-meteor-application-to-jit.su.html"]],
+    "2012-07-17": [["Using passport with flatiron (or - ...", "/2012/07/17/using-passport-with-flatiron.html"]]
   };
 
   jQuery.datepicker.oldAdjustDate = jQuery.datepicker._adjustDate;
